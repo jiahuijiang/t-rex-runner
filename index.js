@@ -122,7 +122,7 @@
         MIN_JUMP_HEIGHT: 35,
         MOBILE_SPEED_COEFFICIENT: 1.2,
         RESOURCE_TEMPLATE_ID: 'audio-resources',
-        SPEED: 6,
+        SPEED: 4,
         SPEED_DROP_COEFFICIENT: 3,
         ARCADE_MODE_INITIAL_TOP_POSITION: 35,
         ARCADE_MODE_TOP_POSITION_PERCENT: 0.1
@@ -429,7 +429,7 @@
             if (this.activated) {
                 this.setArcadeModeContainerScale();
             }
-            
+
             // Redraw the elements back onto the canvas.
             if (this.canvas) {
                 this.canvas.width = this.dimensions.WIDTH;
@@ -474,9 +474,9 @@
                     'from { width:' + Trex.config.WIDTH + 'px }' +
                     'to { width: ' + this.dimensions.WIDTH + 'px }' +
                     '}';
-                
-                // create a style sheet to put the keyframe rule in 
-                // and then place the style sheet in the html head    
+
+                // create a style sheet to put the keyframe rule in
+                // and then place the style sheet in the html head
                 var sheet = document.createElement('style');
                 sheet.innerHTML = keyframes;
                 document.head.appendChild(sheet);
@@ -842,7 +842,7 @@
                 this.update();
             }
         },
-        
+
         /**
          * Hides offline messaging for a fullscreen game only experience.
          */
@@ -871,7 +871,7 @@
             this.containerEl.style.transform =
                 'scale(' + cssScale + ') translateY(' + translateY + 'px)';
         },
-        
+
         /**
          * Pause the game if the tab is not in focus.
          */
@@ -1124,6 +1124,9 @@
                 restartSourceWidth, restartSourceHeight,
                 restartTargetX, restartTargetY, dimensions.RESTART_WIDTH,
                 dimensions.RESTART_HEIGHT);
+
+            // Text
+            this.canvasCtx.fillText('Wear both slippers and jump to restart', restartTargetX - 60, restartTargetY - 50);
         }
     };
 
@@ -1501,7 +1504,7 @@
             yPos: [100, 75, 50], // Variable height.
             yPosMobile: [100, 50], // Variable height mobile.
             multipleSpeed: 999,
-            minSpeed: 8.5,
+            minSpeed: 13,
             minGap: 150,
             collisionBoxes: [
                 new CollisionBox(15, 15, 16, 5),
@@ -2476,6 +2479,9 @@
                 this.sourceDimensions.WIDTH, this.sourceDimensions.HEIGHT,
                 this.xPos[1], this.yPos,
                 this.dimensions.WIDTH, this.dimensions.HEIGHT);
+
+            this.canvasCtx.fillText("Wear both slippers and jump to avoid the obstacles", this.xPos[0], this.yPos + 20);
+            this.canvasCtx.fillText("Wear both slippers and jump to avoid the obstacles", this.xPos[1], this.yPos + 20);
         },
 
         /**
